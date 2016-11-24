@@ -1,0 +1,98 @@
+/*General*/
+html
+{
+    position: relative; 
+    min-height: 100%;
+}
+body
+{
+    margin: 0 0 65px;
+}
+h1,h2,h3
+{
+    color: #036fab;
+    font-family: 'Ravi Prakash', cursive;
+}
+h4,h5,h6
+{
+    color: indigo;
+    font-family: 'Delius Unicase', cursive;
+}
+/*Navbar*/
+nav ul li
+{
+    font-family: monospace;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: larger;
+}
+/*menu izquierda de pagina*/
+#left
+{
+    width: 200px;    
+    float: left;    
+    padding: 5px;     
+}
+/*top*/
+#top {
+    position: relative;        
+    margin: 0px 0px 10px 0px;
+}
+/*contenido*/
+#content
+{        
+    float: right;
+}
+/*Pie de pagina*/
+#bottom
+{
+    text-align: center;
+    height: 50px;   
+    width:100%; 
+    position:absolute; 
+    bottom:0; 
+    left:0; 
+    font-family: 'Ravi Prakash', cursive;
+    font-size: x-large;
+}
+/*info cliente*/
+#infocliente
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #036fab;
+    border-radius: 5px;
+    padding: 10px;   
+    font-family: monospace;
+    
+}
+#panelproducto
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c00;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+}
+#paneldetalleproducto
+{
+    width: 80%;    
+}
+#paneladmin
+{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #03c;
+    border-radius: 10px;
+    text-align: center;
+    margin: 50px;
+}
+.colDerecha
+{
+    text-align: right;
+}
+.colIzquierda
+{
+    text-align: left;
+}

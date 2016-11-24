@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../plantillaAdmin.xhtml">
+
+            <ui:define name="content">
+                <div class="container">
+                    <h2>ADMIN - Familias</h2>
+                    <h:form>
+                        <h:commandButton action="#{catalogoController.irCrearFamilia()}" class="btn btn-primary" value="NUEVO FAMILIA"/>
+                    </h:form>
+                    <h:dataTable value="#{catalogoController.familias}" var="f" class="table table-hover table-striped">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="id"/>
+                            </f:facet>
+                            #{f.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="nombre"/>
+                            </f:facet>
+                            #{f.nombre}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="abreviatura"/>
+                            </f:facet>
+                            #{f.abreviatura}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="version"/>
+                            </f:facet>
+                            #{f.version}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Editar"/>
+                            </f:facet>
+                            <h:form>
+                                <h:commandButton action="#{catalogoController.irEditarFamilia(f.id)}" value="EDITAR" class="btn btn-success"/>
+                            </h:form>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Borrar"/>
+                            </f:facet>
+                            <h:form>
+                                <h:commandButton action="#{catalogoController.doBorrarFamilia(f.id)}" value="BORRAR" class="btn btn-danger"/>
+                            </h:form>
+                        </h:column>
+                    </h:dataTable>
+                    
+                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-user"></span> Volver Al Menu</h:link></h2>
+                </div>                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

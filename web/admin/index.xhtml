@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./plantillaAdmin.xhtml">
+
+            <ui:define name="content">
+                <div class="container">
+                    <h1>ADMINISTRACION</h1>
+                    <div class="row">
+                        <div class="col-md-4" id="paneladmin">
+                            <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-phone"></span> Productos</h1></h:link>
+                            <p>
+                                Session para administrar los productos. Alta, Baja, Modificacion.
+                            </p>
+                        </div>
+                        <div class="col-md-4" id="paneladmin">
+                            <h:link outcome="/admin/familias/index"><h1><span class="glyphicon glyphicon-shopping-cart"></span> Familias</h1></h:link>
+                            <p>
+                                Session para administrar las categorias de productos. Alta, Baja, Modificacion.
+                            </p>
+                        </div>
+                        <div class="col-md-4" id="paneladmin">
+                            <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-user"></span> Usuarios</h1></h:link>
+                            <p>
+                                Session para administrar los usuarios. Alta, Baja, Modificacion.
+                             </p>
+                        </div>
+                        <div class="col-md-4" id="paneladmin">
+                            <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-book"></span> Pedidos</h1></h:link>
+                            <p>
+                                Session para administrar los pedidos. Control, Envio, Cancelacion, Pagos.
+                            </p>
+                        </div>                                                
+                    </div>
+                    <hr/>
+                    <h4><h:link outcome="/index"><span class="glyphicon glyphicon-share-alt"></span> Volver a la tienda</h:link></h4>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

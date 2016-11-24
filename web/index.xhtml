@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./plantillas/plantillaGeneral.xhtml">
+
+
+            <ui:define name="content">
+                <h4><h:messages globalOnly="true"/></h4>
+                <h1><span class="glyphicon glyphicon-phone"></span> Productos</h1>                
+                <div class="row">
+                    <ui:repeat value="#{catalogoController.productos}" var="p">
+                        <div class="col-md-3" id="panelproducto">
+                            <h6><h:outputText value="#{p.modelo} | #{p.marca}"/></h6>
+                            <h:graphicImage name="images/producto.jpg"/>
+                            <p><h:outputText value="#{p.descripcion}"/></p>
+                            <h4>Precio: <span class="label label-success"><h:outputText value="$ #{p.precio}"/></span></h4>
+                            <hr/>
+                            <h:form>
+                                <p>
+                                    <h:commandButton action="#{catalogoController.VerProducto(p.id)}" value="Ver" class="btn btn-warning"/>
+                                    <h:commandButton action="#{carroCompraController.addProductoCompra(p.id, 1)}" value="Agregar Al Carrito" class="btn btn-info"/>
+                                </p>
+                            </h:form>
+                        </div>
+                    </ui:repeat>
+                </div>                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

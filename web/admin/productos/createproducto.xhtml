@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../plantillaAdmin.xhtml">
+
+            <ui:define name="content">
+                <div class="container">
+                    <h2><span class="glyphicon glyphicon-phone"></span> Crear Producto</h2>
+                <h:form>
+                    <h:panelGrid columns="3">
+                        
+                        <h:outputLabel for="modelo" value="Modelo: "/>
+                        <h:inputText value="#{catalogoController.producto.modelo}" id="modelo" required="true"/>
+                        <h:message for="modelo"/>
+                        
+                        <h:outputLabel for="marca" value="Marca: "/>
+                        <h:inputText value="#{catalogoController.producto.marca}" id="marca" required="true"/>
+                        <h:message for="marca"/>
+                        
+                        <h:outputLabel for="descripcion" value="Descripcion: "/>
+                        <h:inputText value="#{catalogoController.producto.descripcion}" id="descripcion" required="true"/>
+                        <h:message for="descripcion"/>
+                        
+                        <h:outputLabel for="detalle" value="Detalle: "/>
+                        <h:inputTextarea cols="30" rows="10" value="#{catalogoController.producto.detalle}" id="detalle" required="true"/>
+                        <h:message for="detalle"/>
+                        
+                        <h:outputLabel for="existencias" value="Existencias: "/>
+                        <h:inputText value="#{catalogoController.producto.existencias}" id="existencias" required="true"/>
+                        <h:message for="existencias"/>
+                        
+                        <h:outputLabel for="precio" value="Precio: "/>
+                        <h:inputText value="#{catalogoController.producto.precio}" id="precio" required="true"/>
+                        <h:message for="precio"/>
+                       
+                         <h:outputLabel for="familia" value="Familia: "/>
+                         <h:selectOneMenu value="#{catalogoController.familia.id}" id="familia">
+                             <f:selectItems value="#{catalogoController.familias}" var="f" itemLabel="#{f.nombre}" itemValue="#{f.id}"/>
+                        </h:selectOneMenu>
+                         <h:message for="familia"/>
+                        
+                         <h:commandButton value="CREAR" class="btn btn-primary" action="#{catalogoController.doCrearProducto()}"/>
+                        
+                    </h:panelGrid>
+                </h:form>
+                <div>
+                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-user"></span> Volver Al Menu</h:link></h2>
+                </div>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

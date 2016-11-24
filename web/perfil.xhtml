@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./plantillas/plantillaGeneral.xhtml">
+
+            <ui:define name="content">
+                <div>
+                    <h2><span class="glyphicon glyphicon-user"></span> Datos de Perfil</h2>                    
+                    <h:graphicImage name="images/perfil.png"/>
+                    <h:form>
+                        <h:panelGrid columns="2" columnClasses="colIzquierda,colDerecha">                            
+                            <h:outputLabel value="Nombre"/>
+                            <h:outputText value="#{usuarioController.cliente.nombre}"/>
+                            <h:outputLabel value="Apellido"/>
+                            <h:outputText value="#{usuarioController.cliente.apellidos}"/>
+                            <h:outputLabel value="DNI"/>
+                            <h:outputText value="#{usuarioController.cliente.nif}"/>
+                            <h:outputLabel value="Email"/>
+                            <h:outputText value="#{usuarioController.cliente.email}"/>
+                            <h:outputLabel value="Telefono"/>
+                            <h:outputText value="#{usuarioController.cliente.telefono}"/>
+                            <h:outputLabel value="Domicilio"/>
+                            <h:outputText value="#{usuarioController.cliente.domicilio}"/>
+                            <h:outputLabel value="Localidad"/>
+                            <h:outputText value="#{usuarioController.cliente.localidad}"/>
+                            <h:outputLabel value="Provincia"/>
+                            <h:outputText value="#{usuarioController.cliente.provincia}"/>
+                            <h:outputLabel value="Codigo Postal"/>
+                            <h:outputText value="#{usuarioController.cliente.codpostal}"/>
+                            <h:panelGroup/>                            
+                            <h:commandButton action="#{usuarioController.doAbrirEdicion()}" value="Editar" class="btn btn-primary"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./plantillas/plantillaGeneral.xhtml">
+
+            <ui:define name="content">
+                <div class="container">                    
+                    <h6><h:messages globalOnly="true" showSummary="false" showDetail="true" style="color:red;"/></h6>
+                
+                <h2><span class="glyphicon glyphicon-user"></span> Ingresar</h2>
+                
+                <h:form class="form" role="form">
+                    <h:panelGrid columns="3" cellpadding="20" cellspacing="1">
+                        <h:outputLabel value="Usuario: " for="user"/>
+                        <h:inputText id="user" label="Usuario" required="true" class="form-control" value="#{usuarioController.usuario.login}"/>
+                        <h:message for="user"/>
+                        
+                        <h:outputLabel value="Password: " for="password"/>
+                        <h:inputSecret id="password" label="Password" required="true" class="form-control" value="#{usuarioController.usuario.password}"/>
+                        <h:message for="password"/>
+                        
+                        <h:panelGroup/>
+                        <h:commandButton action="#{usuarioController.doLogin()}" class="btn btn-primary" value="Login"/>
+                        
+                    </h:panelGrid>
+                </h:form>
+                </div>
+            </ui:define>            
+
+        </ui:composition>
+
+    </body>
+</html>
