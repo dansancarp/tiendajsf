@@ -8,6 +8,7 @@ package com.tiendaweb.entidad;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -82,7 +83,7 @@ public class Cliente implements Serializable {
     @Column(name = "VERSION")
     private Integer version;
     @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Usuario usuarioId;
     @OneToMany(mappedBy = "clienteId")
     private List<Pedido> pedidoList;

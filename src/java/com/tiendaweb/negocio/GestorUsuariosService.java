@@ -10,6 +10,7 @@ import com.tiendaweb.dao.UsuarioFacade;
 import com.tiendaweb.entidad.Cliente;
 import com.tiendaweb.entidad.Usuario;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -66,6 +67,38 @@ public class GestorUsuariosService implements GestorUsuariosServiceLocal {
     public boolean isAdmin(Usuario usuario) {
         return usuarioFacade.IsAdmin(usuario);
     }
+
+    @Override
+    public List<Usuario> listUsuario() {
+        return usuarioFacade.findAll();
+    }
+
+    @Override
+    public void removeUsuario(Usuario usuario) {
+        usuarioFacade.remove(usuario);
+    }
+
+    @Override
+    public Usuario findUsuario(int idUsuario) {
+        return usuarioFacade.find((long)idUsuario);
+    }
+
+    @Override
+    public void removeCliente(Cliente cliente) {
+        clienteFacade.remove(cliente);
+    }
+
+    @Override
+    public List<Cliente> listClientes() {
+        return clienteFacade.findAll();
+    }
+
+    @Override
+    public Cliente findCliente(int idCliente) {
+        return clienteFacade.find((long)idCliente);
+    }
+    
+    
     
     
 }

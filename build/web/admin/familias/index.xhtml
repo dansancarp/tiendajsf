@@ -3,63 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
         <ui:composition template="./../plantillaAdmin.xhtml">
 
             <ui:define name="content">
+                
                 <div class="container">
-                    <h2>ADMIN - Familias</h2>
+                    <h2><span class="glyphicon glyphicon-th-list"></span> ADMIN - Familias</h2>
                     <h:form>
-                        <h:commandButton action="#{catalogoController.irCrearFamilia()}" class="btn btn-primary" value="NUEVO FAMILIA"/>
+                        <p:commandButton action="#{catalogoController.irCrearFamilia()}" class="btn btn-primary glyphicon glyphicon-plus" value="CREAR"/>
                     </h:form>
-                    <h:dataTable value="#{catalogoController.familias}" var="f" class="table table-hover table-striped">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="id"/>
-                            </f:facet>
-                            #{f.id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="nombre"/>
-                            </f:facet>
-                            #{f.nombre}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="abreviatura"/>
-                            </f:facet>
-                            #{f.abreviatura}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="version"/>
-                            </f:facet>
-                            #{f.version}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Editar"/>
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton action="#{catalogoController.irEditarFamilia(f.id)}" value="EDITAR" class="btn btn-success"/>
-                            </h:form>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Borrar"/>
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton action="#{catalogoController.doBorrarFamilia(f.id)}" value="BORRAR" class="btn btn-danger"/>
-                            </h:form>
-                        </h:column>
-                    </h:dataTable>
-                    
-                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-user"></span> Volver Al Menu</h:link></h2>
+                    <h:form>
+                        <p:dataTable id="datos" value="#{catalogoController.familias}" var="f" tableStyleClass="table table-hover table-striped" rows="5" paginator="true" emptyMessage="Ningun Resultado" filteredValue="#{catalogoController.familiasFiltradas}" editable="true">                    
+                        <p:column headerText="Id" filterBy="#{f.id}" filterMatchMode="contains">                            
+                            <h:outputText value="#{f.id}" />
+                        </p:column>
+                        <p:column headerText="Nombre" filterBy="#{f.nombre}" filterMatchMode="contains">                            
+                            <h:outputText value="#{f.nombre}" />
+                        </p:column>
+                        <p:column headerText="Abreviatura" filterBy="#{f.abreviatura}" filterMatchMode="contains">                            
+                            <h:outputText value="#{f.abreviatura}" />
+                        </p:column>
+                        <p:column headerText="Version" filterBy="#{f.version}" filterMatchMode="contains">                            
+                            <h:outputText value="#{f.version}" />
+                        </p:column>
+                        <p:column headerText="Editar">                            
+                            
+                                <p:commandButton action="#{catalogoController.irEditarFamilia(f.id)}" value="EDITAR" class="btn btn-success glyphicon glyphicon-pencil"/>
+                            
+                        </p:column>
+                        <p:column headerText="Borrar">                            
+                            
+                            <p:commandButton action="#{catalogoController.doBorrarFamilia(f.id)}" value="BORRAR" class="btn btn-danger glyphicon glyphicon-trash" update="datos"/>
+                            
+                        </p:column>
+                    </p:dataTable>
+                    </h:form>
+                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-share-alt"></span> Volver Al Menu</h:link></h2>
                 </div>                
+                    
             </ui:define>
 
         </ui:composition>

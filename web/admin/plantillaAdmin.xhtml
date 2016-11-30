@@ -7,34 +7,31 @@
 
     <h:head>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="css/default.css"/>                
+        <h:outputStylesheet name="css/default.css"/>             
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>                
         <!-- Latest compiled and minified JavaScript -->        
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>                
         <!--Fuentes personalizadas-->
-        <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet"/>        
-        <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet"/>                
+        <link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet"/>        
         <title>Admin</title>
     </h:head>
 
     <h:body>
 
         <f:event listener="#{usuarioController.doAuthAdmin()}" type="preRenderView" />
+        <f:event listener="#{catalogoController.CargarProductosAdmin()}" type="preRenderView" />        
         
         <div id="top">
            
         </div>
 
-        <div id="content" class="center_content">
+        <div id="content">
             <ui:insert name="content">Content</ui:insert>
-        </div>
-
-        <div id="bottom">
-            <hr style="width: 80%;"/>
-            <p><span class="glyphicon glyphicon-globe"></span> Tienda Web | Daniel Alberto Sanchez 2016 | dansan0012@gmail.com | Proyecto JAVA EE - JPA - JSF</p>
-        </div>
+        </div>        
 
     </h:body>
 

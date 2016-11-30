@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -45,7 +46,7 @@
                         </h:selectOneMenu>
                          <h:message for="familia"/>
                         
-                         <h:commandButton value="CREAR" class="btn btn-primary" action="#{catalogoController.doCrearProducto()}"/>
+                         <p:commandButton value="CREAR" class="btn btn-primary glyphicon glyphicon-floppy-save" action="#{catalogoController.doCrearProducto()}"/>
                         
                     </h:panelGrid>
                 </h:form>

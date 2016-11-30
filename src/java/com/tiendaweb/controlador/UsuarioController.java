@@ -13,6 +13,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -31,8 +33,27 @@ public class UsuarioController implements Serializable {
        
     private Usuario usuario = new Usuario();
     private Cliente cliente = new Cliente();
-       
-    
+        
+    private List<Cliente> clientes;
+    private List<Cliente> clientesFiltrados;
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public List<Cliente> getClientesFiltrados() {
+        return clientesFiltrados;
+    }
+
+    public void setClientesFiltrados(List<Cliente> clientesFiltrados) {
+        this.clientesFiltrados = clientesFiltrados;
+    }
+
+   
     public Usuario getUsuario() {
         return usuario;
     }
@@ -51,7 +72,13 @@ public class UsuarioController implements Serializable {
     
     
     
-    public UsuarioController() {
+    public UsuarioController() {        
+    }
+    
+    @PostConstruct
+    public void cargarClientes()
+    {
+        this.clientes = gestorUsuariosService.listClientes();
     }
     
     public String irLogin()
@@ -95,7 +122,7 @@ public class UsuarioController implements Serializable {
         this.cliente.setUsuarioId(usuario);
         this.cliente.setVersion(1);        
         gestorUsuariosService.createCliente(cliente);
-        
+        this.clientes = gestorUsuariosService.listClientes();
         return doLogin();
     }
     
@@ -103,6 +130,20 @@ public class UsuarioController implements Serializable {
     {        
         gestorUsuariosService.editCliente(cliente);
         return "perfil";
+    }
+    
+    public String doEditarTipo(Usuario u)
+    {
+        this.gestorUsuariosService.editUsuario(u);
+        this.clientes = gestorUsuariosService.listClientes();
+        return "/admin/usuarios/index";
+    }
+    
+    public String doBorrar(Cliente c)
+    {       
+        gestorUsuariosService.removeCliente(c);
+        this.clientes = gestorUsuariosService.listClientes();
+        return "/admin/usuarios/index";
     }
     
     public String doAbrirEdicion()

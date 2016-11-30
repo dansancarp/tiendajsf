@@ -7,6 +7,7 @@ package com.tiendaweb.negocio;
 
 import com.tiendaweb.entidad.Cliente;
 import com.tiendaweb.entidad.Usuario;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -28,4 +29,16 @@ public interface GestorUsuariosServiceLocal {
     Cliente findClientexUsuario(Usuario usuario);
 
     boolean isAdmin(Usuario usuario);
+
+    List<Usuario> listUsuario();
+
+    void removeUsuario(Usuario usuario);
+
+    Usuario findUsuario(int idUsuario);
+
+    void removeCliente(Cliente cliente);
+
+    List<Cliente> listClientes();
+
+    Cliente findCliente(int idCliente);
 }

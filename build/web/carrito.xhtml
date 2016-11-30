@@ -4,54 +4,45 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      >
+          
+      xmlns:p="http://primefaces.org/ui">
 
     <body>              
 
         <ui:composition template="./plantillas/plantillaGeneral.xhtml">
 
-            <ui:define name="content">
-                <h2><span class="glyphicon glyphicon-shopping-cart"></span> Su compra hasta el momento</h2> 
-                <h:dataTable value="#{carroCompraController.listaProductos}" var="p" class="table table-hover table-striped">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Descripcion"/>
-                        </f:facet>
+            <ui:define name="content">                
+                <h2><span class="glyphicon glyphicon-shopping-cart"></span> Su compra hasta el momento</h2>                 
+                <h:form>                
+                <p:dataTable id="carrito" value="#{carroCompraController.listaProductos}" var="p" class="table table-hover table-striped">
+                    <p:column headerText="Descripcion">                        
                         <h:outputText value="#{p.descripcion}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Modelo"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Modelo">                        
                         <h:outputText value="#{p.modelo}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Precio"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Precio">                        
                         <h:outputText value="#{p.precio}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Cantidad"/>
-                        </f:facet>
-                        <h:form>
-                            <h:inputText value="#{p.cantidad}"/>
-                            <h:commandButton action="#{carroCompraController.editProductoCompra(p.id)}"  class="btn btn-info" value="Actualizar"/>                                                           
-                        </h:form>                        
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Subtotal"/>
-                        </f:facet>
+                    </p:column>
+                    <p:column headerText="Cantidad">                        
+                        
+                            <p:inputText id="cantidad" value="#{p.cantidad}" required="true"  onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                                <f:convertNumber type="number" integerOnly="true"/>
+                                <f:validateLongRange minimum="1"/>
+                            </p:inputText>                            
+                            <p:commandButton action="#{carroCompraController.editProductoCompra(p.id)}"  class="btn btn-info glyphicon glyphicon-plus" value="Actualizar" update="carrito"/>                                                           
+                        
+                    </p:column>
+                    <p:column headerText="Subtotal">
                         <h:outputText value="#{p.precio * p.cantidad}"/>
-                    </h:column>                    
-                    <h:column>
-                        <h:form>
-                            <h:commandButton action="#{carroCompraController.removeProductoCompra(p.id)}"  class="btn btn-danger" value="Remover"/>                                                           
-                        </h:form>
-                    </h:column>                    
-                </h:dataTable>
+                    </p:column>                    
+                    <p:column>
+                        
+                        <p:commandButton action="#{carroCompraController.removeProductoCompra(p.id)}"  class="btn btn-danger glyphicon glyphicon-trash" value="Remover" update="carrito"/>                                                           
+                        
+                    </p:column>                    
+                </p:dataTable>
+                </h:form>
                 <h1 style="text-align:right;">
                     <span class="label label-success">
                         <h:outputText value="Total $: #{carroCompraController.totalCompra}"/>

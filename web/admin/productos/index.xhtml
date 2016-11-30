@@ -3,86 +3,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-    <body>
-
+    <body>      
+        
         <ui:composition template="./../plantillaAdmin.xhtml">
 
             <ui:define name="content">
                 <div class="container">
-                    <h2>ADMIN - Productos</h2>
+                    <h2><span class="glyphicon glyphicon-phone"></span> ADMIN - Productos</h2>
                     <h:form>
-                        <h:commandButton action="#{catalogoController.irCrearProducto()}" class="btn btn-primary" value="NUEVO PRODUCTO"/>
+                        <p:commandButton action="#{catalogoController.irCrearProducto()}" value="CREAR" class="btn btn-primary glyphicon glyphicon-plus" />
+                    </h:form>   
+                    <h:form>
+                    <p:dataTable id="datos" value="#{catalogoController.productos}" var="p" tableStyleClass="table table-hover table-striped" rows="5" paginator="true" emptyMessage="Ningun Resultado">                        
+                        <p:column headerText="Id" filterBy="#{p.id}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.id}" />
+                        </p:column>
+                        <p:column headerText="Modelo" filterBy="#{p.modelo}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.modelo}" />
+                        </p:column>
+                        <p:column headerText="Marca" filterBy="#{p.marca}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.marca}" />
+                        </p:column>
+                        <p:column headerText="Descripcion" filterBy="#{p.descripcion}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.descripcion}" />
+                        </p:column>
+                        <p:column headerText="Existencias" filterBy="#{p.existencias}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.existencias}" />
+                        </p:column>
+                        <p:column headerText="Familia" filterBy="#{p.familiaId.nombre}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.familiaId.nombre}" />
+                        </p:column>                        
+                        <p:column headerText="Precio" filterBy="#{p.precio}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.precio}" />
+                        </p:column>
+                        <p:column headerText="Version" filterBy="#{p.version}" filterMatchMode="contains">                            
+                            <h:outputText value="#{p.version}" />
+                        </p:column>
+                        <p:column headerText="Editar">                            
+                            
+                                <p:commandButton action="#{catalogoController.irEditarProducto(p.id)}" value="EDITAR" class="btn btn-success glyphicon glyphicon-trash"></p:commandButton>
+                            
+                        </p:column>
+                        <p:column headerText="Borrar">                            
+                            
+                            <p:commandButton action="#{catalogoController.doBorrarProducto(p.id)}" value="BORRAR" class="btn btn-danger glyphicon glyphicon-pencil" update="datos"></p:commandButton>
+                            
+                        </p:column>
+                    </p:dataTable>
                     </h:form>
-                    <h:dataTable value="#{catalogoController.productos}" var="p" class="table table-hover table-striped" >
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="id"/>
-                            </f:facet>
-                            #{p.id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="modelo"/>
-                            </f:facet>
-                            #{p.modelo}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="marca"/>
-                            </f:facet>
-                            #{p.marca}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="descripcion"/>
-                            </f:facet>
-                            #{p.descripcion}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="existencias"/>
-                            </f:facet>
-                            #{p.existencias}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="familia"/>
-                            </f:facet>
-                            #{p.familiaId.nombre}
-                        </h:column>                        
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="precio"/>
-                            </f:facet>
-                            #{p.precio}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="version"/>
-                            </f:facet>
-                            #{p.version}
-                        </h:column>                        
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="EDITAR"/>
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton action="#{catalogoController.irEditarProducto(p.id)}" value="EDITAR" class="btn btn-success"/>
-                            </h:form>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="BORRAR"/>
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton action="#{catalogoController.doBorrarProducto(p.id)}" value="BORRAR" class="btn btn-danger"/>
-                            </h:form>
-                        </h:column>
-                    </h:dataTable>
                     <hr/>
-                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-user"></span> Volver Al Menu</h:link></h2>
+                    <h2><h:link outcome="/admin/index"><span class="glyphicon glyphicon-share-alt"></span> Volver Al Menu</h:link></h2>
                 </div>                
             </ui:define>
 

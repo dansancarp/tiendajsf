@@ -10,13 +10,16 @@ body
 }
 h1,h2,h3
 {
-    color: #036fab;
-    font-family: 'Ravi Prakash', cursive;
+    color: #036fab !important;
+    font-family: 'Ravi Prakash', cursive !important;
 }
 h4,h5,h6
 {
-    color: indigo;
-    font-family: 'Delius Unicase', cursive;
+    color: indigo !important;
+    font-family: 'Delius Unicase', cursive !important;
+}
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    border-style: none !important;
 }
 /*Navbar*/
 nav ul li
@@ -42,15 +45,15 @@ nav ul li
 #content
 {        
     float: right;
+    min-height: 800px;
 }
 /*Pie de pagina*/
 #bottom
 {
-    text-align: center;
-    height: 50px;   
+    text-align: center;    
     width:100%; 
-    position:absolute; 
-    bottom:0; 
+    position:relative;         
+    top: 0; 
     left:0; 
     font-family: 'Ravi Prakash', cursive;
     font-size: x-large;

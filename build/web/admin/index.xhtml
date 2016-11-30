@@ -9,8 +9,8 @@
         <ui:composition template="./plantillaAdmin.xhtml">
 
             <ui:define name="content">
-                <div class="container">
-                    <h1>ADMINISTRACION</h1>
+                <div class="container">                    
+                    <h1><span class="glyphicon glyphicon-list-alt"></span> ADMINISTRACION</h1>
                     <div class="row">
                         <div class="col-md-4" id="paneladmin">
                             <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-phone"></span> Productos</h1></h:link>
@@ -19,26 +19,27 @@
                             </p>
                         </div>
                         <div class="col-md-4" id="paneladmin">
-                            <h:link outcome="/admin/familias/index"><h1><span class="glyphicon glyphicon-shopping-cart"></span> Familias</h1></h:link>
+                            <h:link outcome="/admin/familias/index"><h1><span class="glyphicon glyphicon-th-list"></span> Familias</h1></h:link>
                             <p>
                                 Session para administrar las categorias de productos. Alta, Baja, Modificacion.
                             </p>
                         </div>
                         <div class="col-md-4" id="paneladmin">
-                            <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-user"></span> Usuarios</h1></h:link>
+                            <h:link outcome="/admin/usuarios/index"><h1><span class="glyphicon glyphicon-user"></span> Usuarios</h1></h:link>
                             <p>
-                                Session para administrar los usuarios. Alta, Baja, Modificacion.
+                                Session para administrar los usuarios.
                              </p>
+                            <br/>
                         </div>
                         <div class="col-md-4" id="paneladmin">
-                            <h:link outcome="/admin/productos/index"><h1><span class="glyphicon glyphicon-book"></span> Pedidos</h1></h:link>
+                            <h:link outcome="/admin/pedidos/index"><h1><span class="glyphicon glyphicon-book"></span> Pedidos</h1></h:link>
                             <p>
                                 Session para administrar los pedidos. Control, Envio, Cancelacion, Pagos.
                             </p>
                         </div>                                                
                     </div>
                     <hr/>
-                    <h4><h:link outcome="/index"><span class="glyphicon glyphicon-share-alt"></span> Volver a la tienda</h:link></h4>
+                    <h2><h:link outcome="/index"><span class="glyphicon glyphicon-share-alt"></span> Volver a la tienda</h:link></h2>
                 </div>
             </ui:define>
 

@@ -28,6 +28,8 @@ public class CatalogoController implements Serializable{
     /*listas de familias y productos*/    
     private List<Familia> familias;
     private List<Producto> productos;
+    private List<Familia> familiasFiltradas;
+    private List<Producto> productosFiltrados;
     /*almacena un producto*/
     private Producto producto;
     /*almacena una familia*/
@@ -39,6 +41,22 @@ public class CatalogoController implements Serializable{
 
     public void setFamilia(Familia familia) {
         this.familia = familia;
+    }
+
+    public List<Familia> getFamiliasFiltradas() {
+        return familiasFiltradas;
+    }
+
+    public void setFamiliasFiltradas(List<Familia> familiasFiltradas) {
+        this.familiasFiltradas = familiasFiltradas;
+    }
+
+    public List<Producto> getProductosFiltrados() {
+        return productosFiltrados;
+    }
+
+    public void setProductosFiltrados(List<Producto> productosFiltrados) {
+        this.productosFiltrados = productosFiltrados;
     }
     
 
@@ -81,6 +99,11 @@ public class CatalogoController implements Serializable{
         this.productos = catalogoService.listProductos();
     }
     
+    public void CargarProductosAdmin()
+    {
+        this.productos = catalogoService.listProductos();
+    }
+    
     public String CargarProductos()
     {
         this.productos = catalogoService.listProductos();
@@ -104,7 +127,7 @@ public class CatalogoController implements Serializable{
         this.producto = new Producto();  
         this.producto.setVersion(1);        
         this.familia = new Familia();
-        return "/admin/familias/createproducto";
+        return "/admin/productos/createproducto";
     }
     
     public String irEditarProducto(int idProducto)
